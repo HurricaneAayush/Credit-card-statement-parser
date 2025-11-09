@@ -41,7 +41,6 @@ Thumbs.db
 
 # Project specific
 uploads/
-*.pdf
 hdfc_extracted.txt
 
 # Keep empty folders
