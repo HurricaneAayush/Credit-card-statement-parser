@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Statement Parser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Rest of the HTML remains the same -->
+    <div class="container">
+        <h1>💳 Credit Statement Parser</h1>
+        <p class="subtitle">Upload credit card statements to extract key information</p>
+        
+        <div class="error" id="errorMsg"></div>
+        <div class="success" id="successMsg"></div>
+        
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📄</div>
+                <div class="upload-text">Click to upload or drag & drop</div>
+                <div class="upload-subtext">PDF files (Max 16MB each)</div>
+            </div>
+            <input type="file" id="fileInput" accept=".pdf" multiple>
+            
+            <div class="file-list" id="fileList"></div>
+            
+            <div class="button-group" style="display: flex; justify-content: center; gap: 10px;">
+                <button 
+                    class="btn-primary" 
+                    id="uploadBtn" 
+                    onclick="uploadFiles()" 
+                    style="width: 49%;"
+                >
+                    Extract Data
+                </button>
+                <button 
+                    class="btn-secondary" 
+                    onclick="resetForm()" 
+                    style="width: 49%;"
+                >
+                    Clear All Data
+                </button>
+            </div>
+
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processing your files...</p>
+        </div>
+        
+        <div class="results-section" id="resultsSection">
+            <div class="results-title">📊 Extracted Data</div>
+            <div id="results"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
